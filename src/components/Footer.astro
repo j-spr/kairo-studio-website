@@ -1,0 +1,98 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="footer bg-dark section">
+  <div class="container">
+    <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+      <div class="footer-newsletter">
+        <div class="footer-logo mb-6">
+          <span class="logo-text font-brand text-light text-lg">KAIRO</span>
+          <span class="logo-studio text-orange"> STUDIO</span>
+        </div>
+        
+        <p class="text-sm text-light opacity-70 mb-6">
+          Stay ahead in the world of branding and digital design with our Newsletter.
+        </p>
+        
+        <form class="newsletter-form flex gap-2">
+          <input type="email" class="input flex-1" placeholder="Correo" style="border-bottom-color: #333;">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+      
+      <div class="footer-menu">
+        <h3 class="text-md text-light font-medium mb-4">Menú</h3>
+        <ul class="footer-links space-y-2">
+          <li><a href="#inicio" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">Inicio</a></li>
+          <li><a href="#proyectos" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">Proyectos</a></li>
+          <li><a href="#contacto" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3 class="text-md text-light font-medium mb-4">Redes sociales</h3>
+        <ul class="footer-links space-y-2">
+          <li><a href="#" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">Instagram</a></li>
+          <li><a href="#" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">Facebook</a></li>
+          <li><a href="#" class="text-sm text-light opacity-70 hover:opacity-100 transition-opacity">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-light opacity-50">2025 Kairo Studio. Todos los derechos reservados.</p>
+      <div class="footer-legal flex gap-6">
+        <a href="#" class="text-sm text-light opacity-50 hover:opacity-70 transition-opacity">Política de privacidad</a>
+        <a href="#" class="text-sm text-light opacity-50 hover:opacity-70 transition-opacity">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Footer Styles */
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .newsletter-form .input {
+    background: transparent;
+    color: var(--color-light);
+  }
+
+  .newsletter-form .input::placeholder {
+    color: #666;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Newsletter form handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    newsletterForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement | null;
+      const emailInput = form?.querySelector('input[type="email"]') as HTMLInputElement | null;
+      const email = emailInput?.value || '';
+      // Aquí puedes agregar la lógica para el newsletter
+      console.log('Newsletter subscrito:', email);
+      // Aquí podrías mostrar un mensaje de éxito
+    });
+  });
+</script>

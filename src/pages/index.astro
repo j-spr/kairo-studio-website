@@ -1,16 +1,422 @@
 ---
-
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Kairo Studio - Estudio de diseño y desarrollo">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section min-h-screen relative overflow-hidden bg-dark">
+      <div class="hero-background absolute inset-0 z-10">
+        <!-- Aquí irá la imagen/video de fondo -->
+        <div class="gradient-overlay absolute inset-0 z-20"></div>
+      </div>
+      
+      <div class="container relative z-30 min-h-screen flex items-center">
+        <div class="hero-content">
+          <h1 class="hero-title text-hero text-light font-primary">
+            <span class="hero-line">KAIRO</span>
+            <span class="hero-line">STUDIO</span>
+          </h1>
+          
+          <p class="hero-description text-md text-light max-w-lg mt-8 mb-12">
+            Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          </p>
+          
+          <div class="hero-buttons flex gap-4 flex-wrap">
+            <a href="#servicios" class="btn btn-secondary">Servicios</a>
+            <a href="#contacto" class="btn btn-primary">Contacto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="proyectos" class="proyectos-section section bg-light">
+      <div class="container">
+        <div class="section-header mb-16">
+          <h2 class="text-xl text-dark mb-4">Proyectos</h2>
+          <p class="text-md text-dark max-w-lg">
+            Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          </p>
+        </div>
+        
+        <div class="projects-grid">
+          <!-- Los proyectos se insertarán aquí -->
+          <p class="text-sm text-dark opacity-70">Proyectos en desarrollo...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="servicios-section section bg-dark">
+      <div class="container">
+        <div class="section-header mb-16">
+          <h2 class="text-xl text-light mb-4">Servicios</h2>
+        </div>
+        
+        <div class="services-list">
+          <!-- Los servicios se insertarán aquí -->
+          <p class="text-sm text-light opacity-70">Servicios en desarrollo...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section bg-light">
+      <div class="container">
+        <div class="section-header mb-16">
+          <h2 class="text-xl text-dark mb-4">Sobre nosotros</h2>
+          <p class="text-md text-dark max-w-lg">
+            Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          </p>
+        </div>
+        
+        <div class="team-grid">
+          <!-- El equipo se insertará aquí -->
+          <p class="text-sm text-dark opacity-70">Equipo en desarrollo...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes Section -->
+    <section id="planes" class="planes-section section bg-light">
+      <div class="container">
+        <div class="section-header text-center mb-16">
+          <p class="text-md text-dark max-w-2xl mx-auto">
+            Lorem ipsum it, sed do eiusmod tempor incididunt ut labore et dolore 
+            <span class="text-orange">magna aliqua. Ut enim ad minim veniam, quis im veniam, quis</span>
+          </p>
+          
+          <button class="btn btn-outline mt-8">
+            Únete a nuestra historia 
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="feature-item">
+            <div class="feature-icon text-orange mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
+            <p class="feature-description text-sm text-dark opacity-70">
+              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon text-orange mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
+            <p class="feature-description text-sm text-dark opacity-70">
+              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon text-orange mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
+            <p class="feature-description text-sm text-dark opacity-70">
+              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon text-orange mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
+            <p class="feature-description text-sm text-dark opacity-70">
+              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contacto-section section bg-light">
+      <div class="container">
+        <div class="contact-content grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div class="contact-info">
+            <h2 class="text-xl text-dark mb-8">Let's bring your vision to life</h2>
+            
+            <p class="text-md text-dark mb-12 max-w-md">
+              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore 
+              <span class="text-orange">et dolore magna aliqua. Ut enim ad minim veniam, quis</span>
+            </p>
+            
+            <div class="contact-details space-y-6">
+              <div class="contact-item">
+                <span class="contact-label text-sm text-orange">• Whatsapp</span>
+                <div class="contact-values text-md text-dark font-medium">
+                  <p>(313) 305 0878</p>
+                  <p>(316) 871 1671</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <span class="contact-label text-sm text-orange">• Envíanos un correo</span>
+                <p class="contact-value text-md text-dark font-medium">hola@kairostudio.com.co</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form class="form space-y-6">
+              <div class="form-group">
+                <input type="text" class="input" placeholder="Nombre" required>
+              </div>
+              
+              <div class="form-group">
+                <input type="email" class="input" placeholder="Correo" required>
+              </div>
+              
+              <div class="form-group">
+                <textarea class="input" rows="4" placeholder="Mensaje (Cuéntanos tu proyecto)" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                Contactate con nosotros
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section Styles */
+  .hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 50%, #0A0A0A 100%);
+  }
+
+  .hero-background {
+    background-image: url('/path-to-your-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(224, 94, 16, 0.3) 0%,
+      rgba(10, 10, 10, 0.8) 30%,
+      rgba(10, 10, 10, 0.9) 70%,
+      rgba(224, 94, 16, 0.2) 100%
+    );
+  }
+
+  .hero-title {
+    overflow: hidden;
+  }
+
+  .hero-line {
+    display: block;
+    transform: translateY(100%);
+  }
+
+  /* Section Styles */
+  .section-header {
+    /* Removemos la opacidad inicial para evitar contenido invisible */
+    transform: translateY(30px);
+  }
+
+  .projects-grid,
+  .services-list,
+  .team-grid {
+    /* Removemos la opacidad inicial para evitar contenido invisible */
+    transform: translateY(30px);
+  }
+
+  /* Form Styles */
+  textarea.input {
+    resize: vertical;
+    min-height: 120px;
+    border-bottom: 2px solid #ccc;
+    padding: 1rem 0;
+  }
+
+  textarea.input:focus {
+    border-bottom-color: var(--color-orange);
+  }
+
+  /* Footer Styles */
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .newsletter-form .input {
+    background: transparent;
+    color: var(--color-light);
+  }
+
+  .newsletter-form .input::placeholder {
+    color: #666;
+  }
+
+  /* Background Pattern for Hero */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(224, 94, 16, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(224, 94, 16, 0.1) 0%, transparent 50%);
+    z-index: 25;
+    pointer-events: none;
+  }
+
+  /* Features Grid Responsive */
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // GSAP Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Registrar ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Animation
+    const heroLines = document.querySelectorAll('.hero-line');
+    const heroDescription = document.querySelector('.hero-description');
+    const heroButtons = document.querySelector('.hero-buttons');
+
+    // Animación de entrada del hero
+    gsap.timeline({ delay: 0.5 })
+      .to(heroLines, {
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.2
+      })
+      .from(heroDescription, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.5")
+      .from(heroButtons, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.3");
+
+    // Animaciones de scroll para secciones
+    gsap.utils.toArray('.section-header').forEach(header => {
+      gsap.from(header as HTMLElement, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: header as HTMLElement,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    });
+
+    // Animaciones para grids y listas
+    gsap.utils.toArray('.projects-grid, .services-list, .team-grid').forEach(grid => {
+      gsap.from(grid as HTMLElement, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: grid as HTMLElement,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    });
+    // Animación del formulario de contacto
+    gsap.from('.contact-form', {
+      opacity: 0,
+      x: 50,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: '.contact-form',
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    gsap.from('.contact-info', {
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: '.contact-info',
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    // Form handling
+    const contactForm = document.querySelector('.form');
+
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Aquí puedes agregar la lógica para enviar el formulario
+      console.log('Formulario de contacto enviado');
+    });
+  });
+</script>

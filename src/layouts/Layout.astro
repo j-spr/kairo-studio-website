@@ -1,0 +1,338 @@
+---
+// src/layouts/Layout.astro
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Kairo Studio - Estudio de diseño y desarrollo de software, audiovisual y más" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </body>
+</html>
+
+<style is:global>
+  /* CSS Reset y Variables */
+  :root {
+    /* Colores */
+    --color-dark: #0A0A0A;
+    --color-orange: #E05E10;
+    --color-light: #FFF3E3;
+    
+    /* Tipografías */
+    --font-primary: 'Unbounded', sans-serif;
+    --font-brand: 'Anton', sans-serif;
+    
+    /* Espaciados */
+    --container-max: 1400px;
+    --container-padding: 1rem;
+    --section-padding: 4rem 0;
+    
+    /* Transiciones */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Tipografías */
+  .font-brand {
+    font-family: var(--font-brand);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .font-primary {
+    font-family: var(--font-primary);
+  }
+
+  /* Layout Utilities */
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .section {
+    padding: var(--section-padding);
+  }
+
+  /* Text Sizes */
+  .text-hero {
+    font-size: clamp(3rem, 12vw, 12rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+
+  .text-xl {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .text-lg {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .text-md {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .text-sm {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* Colors */
+  .text-dark {
+    color: var(--color-dark);
+  }
+
+  .text-orange {
+    color: var(--color-orange);
+  }
+
+  .text-light {
+    color: var(--color-light);
+  }
+
+  .bg-dark {
+    background-color: var(--color-dark);
+  }
+
+  .bg-orange {
+    background-color: var(--color-orange);
+  }
+
+  .bg-light {
+    background-color: var(--color-light);
+  }
+
+  /* Buttons Base */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: 2px solid;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-light);
+  }
+
+  .btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-orange);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-light);
+    color: var(--color-light);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    border-color: var(--color-dark);
+    color: var(--color-dark);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    transform: translateY(-2px);
+  }
+
+  /* Inputs */
+  .input {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--color-dark);
+    transition: var(--transition-smooth);
+  }
+
+  .input:focus {
+    outline: none;
+    border-bottom-color: var(--color-orange);
+  }
+
+  .input::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-light);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c44e08;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    :root {
+      --container-padding: 1.5rem;
+      --section-padding: 3rem 0;
+    }
+
+    .container {
+      padding: 0 var(--container-padding);
+    }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --container-padding: 1rem;
+      --section-padding: 2.5rem 0;
+    }
+  }
+
+  /* Utilidades adicionales */
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .h-full {
+    height: 100%;
+  }
+
+  .min-h-screen {
+    min-height: 100vh;
+  }
+
+  .z-10 {
+    z-index: 10;
+  }
+
+  .z-20 {
+    z-index: 20;
+  }
+
+  .z-30 {
+    z-index: 30;
+  }
+</style>
