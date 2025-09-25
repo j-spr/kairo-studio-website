@@ -1,0 +1,406 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero">
+  <div class="hero-background">
+    <img src="/images/hero-background-cover.jpg" alt="Kairo Studio Background" />
+  </div>
+  
+  <div class="hero-content">
+    <!-- Main Title with Glassmorphism Effect -->
+    <div class="hero-title-container">
+      <h1 class="hero-title">KAIRO STUDIO</h1>
+    </div>
+
+    <!-- Description and Buttons - Fixed Height Section -->
+    <div class="hero-bottom">
+      <div class="hero-description">
+        <p class="hero-text">
+          Lorem ipsum dolor sit adipiscing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/servicios" class="btn btn-hero-secondary hero-btn">
+          Servicios
+        </a>
+        <a href="/contacto" class="btn btn-hero-primary hero-btn">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Back to space-between */
+    gap: 1rem;
+    /* padding: 8rem 40px 3rem 40px; */
+    padding-left: 40px;
+    padding-right: 40px;
+    min-height: calc(100vh - 86px);
+  }
+
+  /* Main Title Container */
+  .hero-title-container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 60vh; /* Limit title area */
+  }
+
+  .hero-title {
+    font-family: var(--font-brand);
+    font-size: clamp(4rem, 21vw, 28rem);
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    word-spacing: 0.1em; /* Reduced spacing between words */
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+    margin-top: 100px;
+    
+    /* Blend mode effect as in Figma */
+    color: var(--color-light);
+    mix-blend-mode: difference;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(100px) scale(0.9);
+  }
+
+  .hero-title-line {
+    display: block;
+    position: relative;
+  }
+
+  /* Bottom Section - Back to normal flow */
+  .hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto; /* Auto height */
+    min-height: 150px; /* Minimum height */
+    gap: 40px;
+    margin: 0 auto;
+    /* Remove absolute positioning */
+  }
+
+  .hero-description {
+    flex: 1;
+    /* max-width: 590px;  */
+  }
+
+  .hero-text {
+    font-family: var(--font-primary);
+    font-size: 20px; /* Exact size from Figma */
+    font-weight: 300; /* Light weight from specs */
+    line-height: auto;
+    color: var(--color-text-tertiary); /* Changed to text-tertiary #9E9E9E */
+    margin: 0;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Action Buttons */
+  .hero-actions {
+    display: flex;
+    gap: 32px; /* Gap from Figma specs */
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  .hero-btn {
+    font-family: var(--font-primary);
+    font-size: 16px; /* Exact size from Figma */
+    font-weight: 300; /* Regular weight */
+    height: 40px; /* Height from Figma */
+    width: 269px; /* Width from Figma */
+    padding: 12px 20px; /* Padding from Figma */
+    border-radius: 8px; /* Corner radius from Figma */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Hero-specific button styles matching Figma */
+  .btn-hero-secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-light); /* Stroke Kairo-beige */
+    color: var(--color-light);
+  }
+
+  .btn-hero-secondary:hover {
+    background-color: rgba(255, 243, 227, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .btn-hero-primary {
+    background-color: var(--color-orange);
+    border: 1px solid var(--color-orange);
+    color: var(--color-light);
+  }
+
+  .btn-hero-primary:hover {
+    background-color: rgba(224, 94, 16, 0.8);
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 1024px) {
+    .hero-title {
+      font-size: clamp(4rem, 20vw, 24rem); /* Bigger in tablets */
+    }
+    
+    .hero-content {
+      padding: 6rem 40px 1rem 40px;
+    }
+
+    .hero-bottom {
+      height: auto;
+      min-height: 200px;
+    }
+
+    .hero-text {
+      font-size: 20px;
+    }
+
+    .hero-btn {
+      width: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      gap: 2rem;
+      padding: 6rem 20px 2rem 20px; /* Reduced side padding */
+      justify-content: space-between;
+    }
+
+    .hero-title-container {
+      max-height: none;
+    }
+
+    .hero-title {
+      font-size: clamp(5rem, 24vw, 18rem); /* Much bigger text */
+      text-align: center;
+      white-space: normal;
+      word-spacing: 0.05em;
+    }
+
+    .hero-bottom {
+      flex-direction: column;
+      align-items: flex-start; /* Align to left */
+      gap: 0rem;
+      height: auto;
+      min-height: 150px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .hero-text {
+      text-align: left; /* Left align text */
+      font-size: 20px; /* Bigger text */
+    }
+
+    .hero-description {
+      max-width: 100%;
+      text-align: left; /* Left align description */
+      line-height: 1.2;
+    }
+
+    .hero-btn {
+      width: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content {
+      padding: 6rem 20px 2rem 20px; /* Reduced side padding */
+      gap: 4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 32vw, 14rem); /* Much bigger for small mobile */
+      line-height: 1;
+    }
+
+    .hero-bottom {
+      min-height: 120px;
+      align-items: flex-start; /* Left align */
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .hero-btn {
+      width: 150px;
+      max-width: 150px;
+    }
+
+    .hero-text {
+      font-size: 14px; /* Bigger text */
+      text-align: left; /* Left align */
+    }
+  }
+
+  /* Animation Classes for GSAP */
+  .hero-title.animated {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .hero-text.animated,
+  .hero-btn.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // GSAP Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if GSAP is loaded
+    if (typeof gsap !== 'undefined') {
+      // Timeline for hero animations
+      const tl = gsap.timeline({ delay: 0.5 });
+
+      // Animate hero title
+      tl.to('.hero-title', {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out'
+      });
+
+      // Animate description text
+      tl.to('.hero-text', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.6');
+
+      // Animate buttons
+      tl.to('.hero-btn', {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out'
+      }, '-=0.4');
+
+      // Parallax effect for background
+      gsap.registerPlugin(ScrollTrigger);
+      
+      gsap.to('.hero-background img', {
+        yPercent: 30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      // Fade out hero content on scroll
+      gsap.to('.hero-content', {
+        opacity: 0.3,
+        y: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'center top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    } else {
+      // Fallback: add animated classes directly
+      setTimeout(() => {
+        document.querySelector('.hero-title')?.classList.add('animated');
+        document.querySelector('.hero-text')?.classList.add('animated');
+        document.querySelectorAll('.hero-btn').forEach((btn, index) => {
+          setTimeout(() => btn.classList.add('animated'), index * 100);
+        });
+      }, 500);
+    }
+  });
+
+  // Add mouse move parallax effect
+  document.addEventListener('mousemove', (e) => {
+    const hero = document.querySelector('.hero') as HTMLElement;
+    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
+    
+    if (hero && heroTitle) {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      
+      // Use GSAP for smooth parallax if available, otherwise use CSS transform
+      if (typeof gsap !== 'undefined') {
+        gsap.to(heroTitle, {
+          x: x * 10,
+          y: y * 10,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      } else {
+        // Fallback: use CSS transform directly with proper typing
+        (heroTitle as any).style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+      }
+    }
+  });
+</script>

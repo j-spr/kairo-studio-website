@@ -2,6 +2,7 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -10,30 +11,7 @@ import Footer from '../components/Footer.astro';
   
   <main>
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section min-h-screen relative overflow-hidden bg-dark">
-      <div class="hero-background absolute inset-0 z-10">
-        <!-- Aquí irá la imagen/video de fondo -->
-        <div class="gradient-overlay absolute inset-0 z-20"></div>
-      </div>
-      
-      <div class="container relative z-30 min-h-screen flex items-center">
-        <div class="hero-content">
-          <h1 class="hero-title text-hero text-light font-primary">
-            <span class="hero-line">KAIRO</span>
-            <span class="hero-line">STUDIO</span>
-          </h1>
-          
-          <p class="hero-description text-md text-light max-w-lg mt-8 mb-12">
-            Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          </p>
-          
-          <div class="hero-buttons flex gap-4 flex-wrap">
-            <a href="#servicios" class="btn btn-secondary">Servicios</a>
-            <a href="#contacto" class="btn btn-primary">Contacto</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Hero />
 
     <!-- Proyectos Section -->
     <section id="proyectos" class="proyectos-section section bg-light">
@@ -220,13 +198,6 @@ import Footer from '../components/Footer.astro';
     background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 50%, #0A0A0A 100%);
   }
 
-  .hero-background {
-    background-image: url('/path-to-your-hero-image.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
   .gradient-overlay {
     background: linear-gradient(
       135deg,
@@ -325,36 +296,13 @@ import Footer from '../components/Footer.astro';
 </style>
 
 <script>
+  import { gsap, ScrollTrigger } from '../utils/gsap.js';
+
   // GSAP Animations
   document.addEventListener('DOMContentLoaded', () => {
-    // Registrar ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
 
-    // Hero Animation
-    const heroLines = document.querySelectorAll('.hero-line');
-    const heroDescription = document.querySelector('.hero-description');
-    const heroButtons = document.querySelector('.hero-buttons');
-
-    // Animación de entrada del hero
-    gsap.timeline({ delay: 0.5 })
-      .to(heroLines, {
-        y: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: 0.2
-      })
-      .from(heroDescription, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.5")
-      .from(heroButtons, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.3");
+    // Hero Animation - Las animaciones están en Hero.astro
+    // Remover duplicados para evitar conflictos
 
     // Animaciones de scroll para secciones
     gsap.utils.toArray('.section-header').forEach(header => {
