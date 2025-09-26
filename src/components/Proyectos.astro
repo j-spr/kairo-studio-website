@@ -1,0 +1,448 @@
+---
+// src/components/Proyectos.astro
+export interface Proyecto {
+  id: string;
+  name: string;
+  services: string;
+  image: string;
+  logo?: string;
+  link?: string;
+}
+
+const proyectos: Proyecto[] = [
+  {
+    id: 'nutrilact-1',
+    name: 'Nutrilact',
+    services: 'Branding, Diseño Web',
+    image: '/images/projects/nutrilact.jpg',
+    logo: '/images/projects/nutrilact-logo.svg'
+  },
+  {
+    id: 'feels-color',
+    name: 'Feels Color Company',
+    services: 'Branding, Diseño Web',
+    image: '/images/projects/feels.jpg',
+    logo: '/images/projects/feels-logo.svg'
+  },
+  {
+    id: 'nutrilact-2',
+    name: 'Nutrilact',
+    services: 'Branding, Diseño Web',
+    image: '/images/projects/nutrilact.jpg',
+    logo: '/images/projects/nutrilact-logo.svg'
+  },
+  {
+    id: 'feels-color-2',
+    name: 'Feels Color Company',
+    services: 'Branding, Diseño Web',
+    image: '/images/projects/feels.jpg',
+    logo: '/images/projects/feels-logo.svg'
+  }
+];
+---
+
+<section id="proyectos" class="proyectos-section section">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="proyectos-header">
+      <div class="header-content">
+        <h2 class="proyectos-title">Proyectos</h2>
+        <p class="proyectos-description">
+          Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor 
+          incididunt ut labore et <span class="text-muted">dolore magna aliqua. Ut enim ad minim veniam, quis</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="proyectos-grid">
+      {proyectos.map((proyecto) => (
+        <article class="proyecto-item">
+          <div class="proyecto-image">
+            <img src={proyecto.image} alt={`Proyecto ${proyecto.name}`} />
+            <div class="proyecto-overlay">
+              {proyecto.logo && (
+                <div class="proyecto-logo">
+                  <img src={proyecto.logo} alt={`${proyecto.name} Logo`} />
+                </div>
+              )}
+            </div>
+          </div>
+          <div class="proyecto-info">
+            <h3 class="proyecto-name">{proyecto.name}</h3>
+            <p class="proyecto-services">{proyecto.services}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proyectos-section {
+    background-color: var(--color-light);
+    padding: 80px 0;
+  }
+
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header */
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 0;
+    gap: 24px;
+    border-bottom: 0.5px solid #CFCFCF;
+    margin-bottom: 40px;
+  }
+
+  .proyectos-title {
+    font-family: var(--font-primary);
+    font-size: 96px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: -0.04em;
+    color: var(--color-dark);
+    margin: 0;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .proyectos-description {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    max-width: 526px;
+    margin: 0;
+    text-align: right;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .proyectos-description .text-muted {
+    color: var(--color-text-tertiary);
+  }
+
+  /* Projects Grid */
+  .proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .proyecto-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  /* Project Image */
+  .proyecto-image {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+  }
+
+  .proyecto-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.4s ease;
+  }
+
+  .proyecto-item:hover .proyecto-image img {
+    transform: scale(1.1);
+    filter: blur(2px);
+  }
+
+  /* Project Overlay */
+  .proyecto-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: var(--transition-smooth);
+    /* Prevent blur inheritance */
+    filter: none;
+    backdrop-filter: none;
+  }
+
+  .proyecto-overlay {
+    opacity: 1;
+  }
+
+  .proyecto-logo {
+    max-width: 299.65px;
+    max-height: 90.71px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Ensure logo doesn't inherit blur */
+    filter: none;
+    backdrop-filter: none;
+  }
+
+  .proyecto-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1) !important; /* Make logo white and prevent blur inheritance */
+    transition: all 0.4s ease;
+  }
+
+  .proyecto-item:hover .proyecto-logo img {
+    filter: brightness(0) invert(1) !important; /* Keep logo white and sharp */
+  }
+
+  /* Project Info */
+  .proyecto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    line-height: 1.4;
+  }
+
+  .proyecto-name {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: auto;
+    color: var(--color-dark);
+    margin: 0;
+  }
+
+  .proyecto-services {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: auto;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 30px;
+    }
+
+    .proyectos-title {
+      font-size: 80px;
+    }
+
+    .proyecto-image {
+      height: 400px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      border-bottom: none;
+      margin-bottom: 20px;
+    }
+
+    .proyectos-description {
+      max-width: 100%;
+      text-align: left;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .proyectos-section {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 20px;
+    }
+
+    .proyectos-title {
+      font-size: 60px;
+    }
+
+    .proyectos-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .proyecto-image {
+      height: 300px;
+    }
+
+    .proyecto-name {
+      font-size: 18px;
+    }
+
+    .proyecto-services {
+      font-size: 16px;
+    }
+
+    .header-content {
+      padding: 24px 0;
+      gap: 16px;
+      border-bottom: none;
+      margin-bottom: 20px;
+    }
+
+    .proyectos-description {
+      font-size: 16px;
+      text-align: left;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .proyectos-section {
+      padding: 40px 0;
+    }
+
+    .proyectos-title {
+      font-size: 48px;
+    }
+
+    .proyecto-image {
+      height: 420px;
+      border-radius: 16px;
+    }
+
+    .proyectos-grid {
+      gap: 24px;
+    }
+
+    .proyecto-item {
+      gap: 8px;
+    }
+  }
+
+  /* Animation Classes for GSAP */
+  .proyectos-title.animated,
+  .proyectos-description.animated,
+  .proyectos-grid.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hover Effects Enhancement */
+  .proyecto-item {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .proyecto-item:hover .proyecto-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .proyecto-item:hover .proyecto-image img {
+    transform: scale(1.1);
+    filter: blur(2px);
+  }
+</style>
+
+<script>
+  // GSAP Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if GSAP is loaded
+    if (typeof gsap !== 'undefined') {
+      // Animate proyectos title
+      gsap.from('.proyectos-title', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.proyectos-title',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Animate description
+      gsap.from('.proyectos-description', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: '.proyectos-description',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Animate projects grid with stagger
+      gsap.from('.proyecto-item', {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.proyectos-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Parallax effect for project images
+      gsap.utils.toArray('.proyecto-image img').forEach(img => {
+        gsap.to(img as HTMLElement, {
+          yPercent: -10,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img as HTMLElement,
+            start: 'bottom bottom',
+            end: 'top top',
+            scrub: true
+          }
+        });
+      });
+
+    } else {
+      // Fallback: add animated classes directly
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      // Observe elements
+      const titleEl = document.querySelector('.proyectos-title');
+      if (titleEl) observer.observe(titleEl);
+      const descEl = document.querySelector('.proyectos-description');
+      if (descEl) observer.observe(descEl);
+      const gridEl = document.querySelector('.proyectos-grid');
+      if (gridEl) observer.observe(gridEl);
+    }
+  });
+</script>
