@@ -1,0 +1,632 @@
+---
+// src/components/Servicios.astro
+---
+
+<section id="servicios" class="servicios-section section bg-dark">
+  <div class="container">
+    <div class="section-header mb-24">
+      <div class="header-content">
+        <h2 class="services-title">Servicios</h2>
+        <p class="services-description">
+          Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <span class="text-orange">magna aliqua. Ut enim ad minim veniam, quis</span>
+        </p>
+      </div>
+    </div>
+    
+    <div class="services-list">
+      <!-- Servicio 1: Branding -->
+      <div class="service-item" data-service="branding">
+        <div class="service-header">
+          <div class="service-number">
+            <span class="service-index text-tertiary">01<span class="service-dot">.</span></span>
+          </div>
+          <h3 class="service-title">Branding</h3>
+          <button class="service-toggle" aria-label="Expandir servicio">
+            <svg class="toggle-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line horizontal" d="M14 20h12" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line vertical" d="M20 14v12" stroke="var(--color-orange)" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-image">
+              <img src="/images/branding-image.jpg" alt="Branding" />
+            </div>
+            <div class="service-info">
+              <div class="service-title-expanded">Branding</div>
+              <h4 class="service-subtitle">Todo lo que necesitas para que tu marca brille</h4>
+              <div class="service-tags">
+                <span class="service-tag">Logos</span>
+                <span class="service-tag">Manual de marca</span>
+                <span class="service-tag">Rebranding</span>
+                <span class="service-tag">Identidad visual</span>
+                <span class="service-tag">Papelería</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 2: Desarrollo Web y Apps -->
+      <div class="service-item" data-service="desarrollo">
+        <div class="service-header">
+          <div class="service-number">
+            <span class="service-index text-tertiary">02<span class="service-dot">.</span></span>
+          </div>
+          <h3 class="service-title">Desarrollo Web y apps</h3>
+          <button class="service-toggle" aria-label="Expandir servicio">
+            <svg class="toggle-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line horizontal" d="M14 20h12" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line vertical" d="M20 14v12" stroke="var(--color-orange)" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-image">
+              <img src="/images/branding-image.jpg" alt="Desarrollo Web y Apps" />
+            </div>
+            <div class="service-info">
+              <div class="service-title-expanded">Desarrollo Web y apps</div>
+              <h4 class="service-subtitle">Soluciones digitales modernas y funcionales</h4>
+              <div class="service-tags">
+                <span class="service-tag">Sitios web</span>
+                <span class="service-tag">E-commerce</span>
+                <span class="service-tag">Apps móviles</span>
+                <span class="service-tag">Landing pages</span>
+                <span class="service-tag">PWA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 3: Diseño UX/UI -->
+      <div class="service-item" data-service="uxui">
+        <div class="service-header">
+          <div class="service-number">
+            <span class="service-index text-tertiary">03<span class="service-dot">.</span></span>
+          </div>
+          <h3 class="service-title">Diseño UX/UI</h3>
+          <button class="service-toggle" aria-label="Expandir servicio">
+            <svg class="toggle-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line horizontal" d="M14 20h12" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line vertical" d="M20 14v12" stroke="var(--color-orange)" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-image">
+              <img src="/images/branding-image.jpg" alt="Diseño UX/UI" />
+            </div>
+            <div class="service-info">
+              <div class="service-title-expanded">Diseño UX/UI</div>
+              <h4 class="service-subtitle">Experiencias digitales centradas en el usuario</h4>
+              <div class="service-tags">
+                <span class="service-tag">Prototipado</span>
+                <span class="service-tag">Wireframes</span>
+                <span class="service-tag">User testing</span>
+                <span class="service-tag">Design systems</span>
+                <span class="service-tag">Interfaces</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 4: Automatizaciones -->
+      <div class="service-item" data-service="automatizacion">
+        <div class="service-header">
+          <div class="service-number">
+            <span class="service-index text-tertiary">04<span class="service-dot">.</span></span>
+          </div>
+          <h3 class="service-title">Automatizaciones</h3>
+          <button class="service-toggle" aria-label="Expandir servicio">
+            <svg class="toggle-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line horizontal" d="M14 20h12" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line vertical" d="M20 14v12" stroke="var(--color-orange)" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-image">
+              <img src="/images/branding-image.jpg" alt="Automatizaciones" />
+            </div>
+            <div class="service-info">
+              <div class="service-title-expanded">Automatizaciones</div>
+              <h4 class="service-subtitle">Optimiza procesos y aumenta la eficiencia</h4>
+              <div class="service-tags">
+                <span class="service-tag">Workflows</span>
+                <span class="service-tag">APIs</span>
+                <span class="service-tag">Integraciones</span>
+                <span class="service-tag">Chatbots</span>
+                <span class="service-tag">CRM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicio 5: Redes Sociales -->
+      <div class="service-item" data-service="redes">
+        <div class="service-header">
+          <div class="service-number">
+            <span class="service-index text-tertiary">05<span class="service-dot">.</span></span>
+          </div>
+          <h3 class="service-title">Redes sociales</h3>
+          <button class="service-toggle" aria-label="Expandir servicio">
+            <svg class="toggle-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line horizontal" d="M14 20h12" stroke="var(--color-orange)" stroke-width="2"/>
+              <path class="toggle-line vertical" d="M20 14v12" stroke="var(--color-orange)" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="service-content">
+          <div class="service-details">
+            <div class="service-image">
+              <img src="/images/branding-image.jpg" alt="Redes Sociales" />
+            </div>
+            <div class="service-info">
+              <div class="service-title-expanded">Redes sociales</div>
+              <h4 class="service-subtitle">Conecta con tu audiencia de manera efectiva</h4>
+              <div class="service-tags">
+                <span class="service-tag">Community manager</span>
+                <span class="service-tag">Contenido visual</span>
+                <span class="service-tag">Estrategia digital</span>
+                <span class="service-tag">Social ads</span>
+                <span class="service-tag">Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicios-section {
+    padding: 80px 0 120px 0;
+  }
+
+  /* Header Styles */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .services-title {
+    font-family: var(--font-primary);
+    font-size: 96px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-light);
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .services-description {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 526px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  .services-list {
+    width: 100%;
+  }
+
+  .service-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+
+  .service-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .service-header:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  .service-number {
+    display: flex;
+    align-items: center;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .service-index {
+    font-family: var(--font-primary);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: var(--transition-smooth);
+  }
+
+  .service-dot {
+    color: var(--color-orange);
+  }
+
+  .service-title {
+    font-family: var(--font-primary);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-light);
+    margin: 0;
+    text-align: center;
+    transition: var(--transition-smooth);
+    flex: 1;
+  }
+
+  .service-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    margin-left: auto;
+  }
+
+  .service-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .toggle-icon {
+    transition: var(--transition-smooth);
+  }
+
+  .toggle-line {
+    transition: var(--transition-smooth);
+  }
+
+  .service-content {
+    max-height: 0;
+    overflow: visible;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 10;
+  }
+
+  .service-details {
+    display: flex;
+    gap: 80px;
+    padding: 0 0 40px 0;
+    align-items: flex-start;
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 10;
+    width: 880px;
+    margin: 0 auto;
+  }
+
+  .service-image {
+    width: 350px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .service-subtitle {
+    font-family: var(--font-primary);
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--color-light);
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .service-tag {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition-smooth);
+  }
+
+  .service-tag:hover {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+  }
+
+  /* Estados activos */
+  .service-item.active .service-title {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .service-item.active .service-title-expanded {
+    color: var(--color-light);
+    font-size: 40px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-item.active .service-details {
+    transform: translateY(-50px); /* Reducido de -72px a -50px para que suba menos */
+  }
+
+  .service-item.active .toggle-line.vertical {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .service-item.active .service-content {
+    max-height: 500px;
+  }
+
+  /* Animaciones CSS Fallback */
+  .services-list.animate-fallback .service-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .services-list.animate-fallback .service-item:nth-child(1) { animation-delay: 0.1s; }
+  .services-list.animate-fallback .service-item:nth-child(2) { animation-delay: 0.2s; }
+  .services-list.animate-fallback .service-item:nth-child(3) { animation-delay: 0.3s; }
+  .services-list.animate-fallback .service-item:nth-child(4) { animation-delay: 0.4s; }
+  .services-list.animate-fallback .service-item:nth-child(5) { animation-delay: 0.5s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .services-title {
+      font-size: 48px;
+    }
+
+    .services-description {
+      text-align: left;
+      max-width: 100%;
+      font-weight: 300;
+    }
+
+    .service-details {
+      gap: 40px;
+      padding: 0 0 40px 0;
+      width: 100%;
+      margin: 0;
+    }
+
+    .service-image {
+      width: 280px;
+      height: 240px;
+    }
+
+    .service-info {
+      height: 240px;
+    }
+
+    .service-subtitle {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+  .servicios-section {
+    padding: 60px 0 80px 0;
+  }
+
+  .services-title {
+    font-size: 48px;
+  }
+
+  .services-description {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .service-header {
+    padding: 30px 0;
+    position: relative;
+  }
+
+  .service-number {
+    min-width: auto;
+  }
+
+  .service-title {
+    font-size: 24px;
+    text-align: left;
+    margin-right: 60px;
+  }
+
+  .service-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .service-content {
+    overflow: visible;
+  }
+
+  .service-details {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 0 40px 0;
+    width: 100%;
+    margin: 0;
+    transform: none;
+  }
+
+  .service-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .service-info {
+    height: auto;
+  }
+
+  .service-item.active .service-content {
+    max-height: 600px;
+  }
+
+  .service-item.active .service-details {
+    transform: none;
+  }
+}
+
+  @media (max-width: 480px) {
+    .services-title {
+      font-size: 48px;
+    }
+
+    .service-index {
+      font-size: 32px;
+    }
+
+    .service-title {
+      font-size: 20px;
+    }
+
+    .service-subtitle {
+      font-size: 18px;
+    }
+
+    .service-tag {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var serviceItems = document.querySelectorAll('.service-item');
+
+    for (var i = 0; i < serviceItems.length; i++) {
+      var item = serviceItems[i];
+      var header = item.querySelector('.service-header');
+      var toggle = item.querySelector('.service-toggle');
+      
+      // Crear función con closure para cada item
+      (function(currentItem, currentHeader, currentToggle) {
+        function handleClick(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          
+          var isActive = currentItem.classList.contains('active');
+          
+          // Cerrar todos los otros servicios
+          for (var j = 0; j < serviceItems.length; j++) {
+            if (serviceItems[j] !== currentItem) {
+              serviceItems[j].classList.remove('active');
+            }
+          }
+
+          // Alternar el servicio actual
+          if (isActive) {
+            currentItem.classList.remove('active');
+          } else {
+            currentItem.classList.add('active');
+          }
+        }
+
+        // Agregar evento click al header
+        if (currentHeader) {
+          currentHeader.addEventListener('click', handleClick);
+        }
+        
+        // Agregar evento click al botón toggle
+        if (currentToggle) {
+          currentToggle.addEventListener('click', handleClick);
+        }
+      })(item, header, toggle);
+    }
+
+    // Animación de entrada con GSAP si está disponible
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      var servicesList = document.querySelector('.services-list');
+      if (servicesList) {
+        gsap.from('.service-item', {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: servicesList,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+    } else {
+      // Fallback CSS
+      var servicesList = document.querySelector('.services-list');
+      if (servicesList) {
+        servicesList.classList.add('animate-fallback');
+      }
+    }
+  });
+</script>
