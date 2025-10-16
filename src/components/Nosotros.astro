@@ -1,0 +1,550 @@
+---
+// src/components/Nosotros.astro
+---
+
+<section class="nosotros-section section bg-light">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="header-content">
+        <h2 class="nosotros-title text-dark">Sobre nosotros</h2>
+        <p class="nosotros-description text-md text-dark">
+          Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt 
+          ut labore <span class="text-secondary">et dolore magna aliqua. Ut enim ad minim veniam, quis</span>
+        </p>
+      </div>
+    </div>
+    
+    <!-- Team Grid -->
+    <div class="team-grid">
+      <!-- Kairo Studio Card -->
+      <div class="team-card kairo-card">
+        <div class="kairo-header">
+          <div class="kairo-logo">
+            <img src="/images/logo-kairo-studio-2.svg" alt="Kairo Studio" class="kairo-logo-img" />
+          </div>
+          <div class="kairo-arrow">
+            <img src="/images/arrow-icon-orange.svg" alt="arrow" width="48" height="48" />
+          </div>
+        </div>
+        <p class="kairo-description">
+          Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor 
+          incididunt ut labore
+        </p>
+      </div>
+
+      <!-- Team Member 1 -->
+      <div class="team-member">
+        <div class="member-image">
+          <img src="/images/team-member-1.jpg" alt="John Doe" />
+        </div>
+        <div class="member-info">
+          <h3 class="member-name">John Doe</h3>
+          <p class="member-role">Co - founder</p>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="team-member">
+        <div class="member-image">
+          <img src="/images/team-member-1.jpg" alt="John Doe" />
+        </div>
+        <div class="member-info">
+          <h3 class="member-name">John Doe</h3>
+          <p class="member-role">Co - founder</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section - Layout Centrado según Design Doc -->
+    <div class="features-section">
+      <!-- Features Text Centrado -->
+      <div class="features-header">
+        <p class="features-description">
+          Lorem ipsum it, sed do eiusmod tempor incididunt ut labore et dolore 
+          <span class="text-orange">magna aliqua. Ut enim ad minim veniam, quis im veniam, quis</span>
+        </p>
+        
+        <button class="btn btn-outline features-btn">
+          <span>Únete a nuestra historia</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Features Grid - 4 columnas horizontales -->
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="/images/clock-icon-orange.svg" alt="Clock" width="32" height="32" />
+          </div>
+          <h4 class="feature-title">Fast delivery</h4>
+          <p class="feature-description">
+            Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt
+          </p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="/images/clock-icon-gray.svg" alt="Clock" width="32" height="32" />
+          </div>
+          <h4 class="feature-title">Fast delivery</h4>
+          <p class="feature-description">
+            Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt
+          </p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="/images/clock-icon-gray.svg" alt="Clock" width="32" height="32" />
+          </div>
+          <h4 class="feature-title">Fast delivery</h4>
+          <p class="feature-description">
+            Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt
+          </p>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <img src="/images/clock-icon-gray.svg" alt="Clock" width="32" height="32" />
+          </div>
+          <h4 class="feature-title">Fast delivery</h4>
+          <p class="feature-description">
+            Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nosotros-section {
+    padding: 5rem 0 7.5rem 0;
+  }
+
+  /* Section Header */
+  .section-header { 
+    margin-bottom: 2.5rem;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.25rem 0;
+  }
+
+  .nosotros-title {
+    font-family: var(--font-primary);
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    flex: 0 0 auto;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .nosotros-description {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    max-width: 526px;
+    flex: 1;
+    text-align: right; /* Alineación a la derecha */
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  /* Team Grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 7.5rem;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  /* Kairo Studio Card */
+  .kairo-card {
+    background: var(--color-light);
+    border: 1px solid var(--color-dark);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.7rem;
+    min-height: 488px;
+  }
+
+  .kairo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .kairo-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .kairo-logo-img {
+    height: 60px;
+    width: auto;
+  }
+
+  .kairo-arrow {
+    color: var(--color-orange);
+    flex-shrink: 0;
+  }
+
+  .kairo-description {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.04em;
+  }
+
+  /* Team Members */
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .member-image {
+    width: 100%;
+    height: 418px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--color-text-tertiary);
+  }
+
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .member-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .member-name {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-dark);
+  }
+
+  .member-role {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  /* Features Section - Layout según Design Doc Pt.2 */
+  .features-section {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5rem;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  /* Features Header - Centrado con botón a la derecha */
+  .features-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5rem;
+  }
+
+  .features-description {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--color-text-secondary);
+    flex: 1;
+    max-width: 982px;
+  }
+
+  .features-btn {
+    flex-shrink: 0;
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 0.75rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--color-text-secondary);
+    background: transparent;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .features-btn:hover {
+    background: var(--color-dark);
+    color: var(--color-light);
+    border-color: var(--color-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Features Grid - 4 columnas horizontales */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .feature-title {
+    font-family: var(--font-primary);
+    font-size: 1.13rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary);
+  }
+
+  .feature-description {
+    font-family: var(--font-primary);
+    font-size: 1.13rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+  }
+
+  /* Tablet Responsive */
+  @media (max-width: 1024px) {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .nosotros-description {
+      max-width: 100%;
+      text-align: left; 
+    }
+
+    .features-header {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .features-description {
+      max-width: 100%;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .nosotros-section {
+      padding: 3rem 0 5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .header-content {
+      padding: 1.5rem 0;
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .kairo-card {
+      padding: 2rem 1.5rem;
+      gap: 2rem;
+      min-height: auto;
+    }
+
+    .kairo-description {
+      font-size: 1.25rem;
+    }
+
+    .member-image {
+      height: 320px;
+    }
+
+    .features-section {
+      gap: 3rem;
+    }
+
+    .features-header {
+      gap: 2rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .features-description {
+      font-size: 32px;
+    }
+
+    .feature-title,
+    .feature-item .feature-description {
+      font-size: 1rem;
+    }
+  }
+
+  /* Fallback styles - ensure elements are visible */
+  .nosotros-title,
+  .nosotros-description,
+  .team-grid,
+  .features-section {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+
+<script>
+  // GSAP Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ensure all elements are visible first
+    const elementsToShow = ['.nosotros-title', '.nosotros-description', '.team-grid', '.features-section'];
+    elementsToShow.forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) {
+        (element as HTMLElement).style.opacity = '1';
+        (element as HTMLElement).style.transform = 'translateY(0)';
+      }
+    });
+
+    // Check if GSAP is loaded
+    if (typeof gsap !== 'undefined') {
+      // Reset elements for animation
+      gsap.set(['.nosotros-title', '.nosotros-description', '.team-grid', '.features-section'], {
+        opacity: 0,
+        y: 30
+      });
+
+      // Animate section title
+      gsap.to('.nosotros-title', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.nosotros-title',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate description
+      gsap.to('.nosotros-description', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.nosotros-description',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate team grid
+      gsap.to('.team-grid', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.team-grid',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate team members individually
+      gsap.from('.team-member, .kairo-card', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.team-grid',
+          start: "top 70%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate features section
+      gsap.to('.features-section', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.features-section',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate feature items
+      gsap.from('.feature-item', {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.features-grid',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }
+  });
+</script>

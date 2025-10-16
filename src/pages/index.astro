@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Proyectos from '../components/Proyectos.astro';
 import Servicios from '../components/Servicios.astro';
+import Nosotros from '../components/Nosotros.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -22,90 +23,7 @@ import Footer from '../components/Footer.astro';
     <Servicios />
 
     <!-- About Section -->
-    <section id="about" class="about-section section bg-light">
-      <div class="container">
-        <div class="section-header mb-16">
-          <h2 class="text-xl text-dark mb-4">Sobre nosotros</h2>
-          <p class="text-md text-dark max-w-lg">
-            Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          </p>
-        </div>
-        
-        <div class="team-grid">
-          <!-- El equipo se insertará aquí -->
-          <p class="text-sm text-dark opacity-70">Equipo en desarrollo...</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Planes Section -->
-    <section id="planes" class="planes-section section bg-light">
-      <div class="container">
-        <div class="section-header text-center mb-16">
-          <p class="text-md text-dark max-w-2xl mx-auto">
-            Lorem ipsum it, sed do eiusmod tempor incididunt ut labore et dolore 
-            <span class="text-orange">magna aliqua. Ut enim ad minim veniam, quis im veniam, quis</span>
-          </p>
-          
-          <button class="btn btn-outline mt-8">
-            Únete a nuestra historia 
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="feature-item">
-            <div class="feature-icon text-orange mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-              </svg>
-            </div>
-            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
-            <p class="feature-description text-sm text-dark opacity-70">
-              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
-            </p>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon text-orange mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-              </svg>
-            </div>
-            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
-            <p class="feature-description text-sm text-dark opacity-70">
-              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
-            </p>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon text-orange mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-              </svg>
-            </div>
-            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
-            <p class="feature-description text-sm text-dark opacity-70">
-              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
-            </p>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon text-orange mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-              </svg>
-            </div>
-            <h3 class="feature-title text-md font-medium mb-2">Fast delivery</h3>
-            <p class="feature-description text-sm text-dark opacity-70">
-              Lorem ipsum dolor sitadpiscing elit, sed do eiusmod tempor incididunt
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Nosotros />
 
     <!-- Contacto Section -->
     <section id="contacto" class="contacto-section section bg-light">
