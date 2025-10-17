@@ -1,0 +1,254 @@
+---
+// src/components/Separador.astro
+---
+
+<section class="separador">
+  <div class="separador-background">
+    <img 
+      src="/images/kairo-studio-bg-desktop.png"
+      alt="" 
+      class="background-image desktop"
+      aria-hidden="true"
+    />
+    <img 
+      src="/images/kairo-studio-bg-mobile.png"
+      alt="" 
+      class="background-image mobile"
+      aria-hidden="true"
+    />
+  </div>
+  
+  <div class="separador-content">
+    <span class="separador-small-text">Lorem ipsum dolor</span>
+    
+    <h2 class="separador-title">
+      <span class="title-line">Lorem ipsum dolor sitadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore <em class="text-muted">magna aliqua. Ut enim ad minim veniam </em></span>
+    </h2>
+  </div>
+</section>
+
+<style>
+  .separador {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-dark);
+    overflow: hidden;
+    padding: 120px 80px;
+  }
+
+  /* Background Pattern */
+  .separador-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .background-image {
+    max-width: none;
+    opacity: 0.09;
+  }
+
+  /* Desktop image */
+  .background-image.desktop {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+
+  /* Mobile image - hidden by default */
+  .background-image.mobile {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Content */
+  .separador-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .separador-small-text {
+    font-family: var(--font-primary);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: -0.04em;
+    color: var(--color-orange);
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .separador-title {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4vw, 48px);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .title-line {
+    display: block;
+    color: var(--color-light);
+    
+    /* Animation setup */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Usar strong y em para los colores */
+  .text-highlight,
+  strong.text-highlight {
+    color: var(--color-orange);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .text-muted,
+  em.text-muted {
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .separador {
+      padding: 120px 24px;
+      min-height: 80vh;
+    }
+
+    .separador-content {
+      gap: 24px;
+    }
+
+    .separador-small-text {
+      font-size: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .separador-title {
+      font-size: clamp(1.5rem, 6vw, 24px);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    /* Switch to mobile image */
+    .background-image.desktop {
+      display: none;
+    }
+
+    .background-image.mobile {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .separador {
+      padding: 100px 24px;
+      min-height: 85vh;
+    }
+  }
+
+  /* Animation Classes */
+  .separador-small-text.animated,
+  .title-line.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // GSAP Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if GSAP is loaded
+    if (typeof gsap !== 'undefined') {
+      
+      // Parallax effect for background image (horizontal)
+      gsap.to('.background-image', {
+        x: '-5%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.separador',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      // Small text animation
+      gsap.from('.separador-small-text', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.separador-content',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Title lines animation with stagger
+      gsap.from('.title-line', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.separador-content',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+    } else {
+      // Fallback: add animated classes directly
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelector('.separador-small-text')?.classList.add('animated');
+            
+            const titleLines = document.querySelectorAll('.title-line');
+            titleLines.forEach((line, index) => {
+              setTimeout(() => line.classList.add('animated'), index * 150);
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+
+      const separador = document.querySelector('.separador');
+      if (separador) {
+        observer.observe(separador);
+      }
+    }
+  });
+</script>
