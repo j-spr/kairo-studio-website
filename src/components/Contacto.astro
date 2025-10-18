@@ -1,5 +1,6 @@
 ---
 // src/components/Contacto.astro
+import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
 ---
 
 <section id="contacto" class="contacto-section">
@@ -23,17 +24,17 @@
               <span>Whatsapp</span>
             </div>
             <div class="contacto-values">
-              <p>(313) 305 0878</p>
-              <p>(316) 871 1671</p>
+              <p>{PHONE_1}</p>
+              <p>{PHONE_2}</p>
             </div>
           </div>
-          
+
           <div class="contacto-item">
             <div class="contacto-label">
               <span class="bullet">•</span>
               <span>Envíanos un correo</span>
             </div>
-            <p class="contacto-value">hola@kairostudio.com.co</p>
+            <p class="contacto-value">{CONTACT_EMAIL}</p>
           </div>
         </div>
       </div>
@@ -42,30 +43,40 @@
       <div class="contacto-form-wrapper">
         <form class="contacto-form">
           <div class="form-group">
-            <input 
-              type="text" 
-              class="form-input" 
-              placeholder="Nombre *" 
+            <input
+              type="text"
+              name="name"
+              class="form-input"
+              placeholder="Nombre *"
               required
+              minlength="2"
+              maxlength="100"
             >
+            <span class="form-error" data-error="name"></span>
           </div>
-          
+
           <div class="form-group">
-            <input 
-              type="email" 
-              class="form-input" 
-              placeholder="Correo *" 
+            <input
+              type="email"
+              name="email"
+              class="form-input"
+              placeholder="Correo *"
               required
             >
+            <span class="form-error" data-error="email"></span>
           </div>
-          
+
           <div class="form-group">
-            <input 
-              type="text" 
-              class="form-input" 
-              placeholder="Mensaje (Cuéntanos tu proyecto)" 
+            <textarea
+              name="message"
+              class="form-input form-textarea"
+              placeholder="Mensaje (Cuéntanos tu proyecto) *"
               required
-            >
+              minlength="10"
+              maxlength="1000"
+              rows="4"
+            ></textarea>
+            <span class="form-error" data-error="message"></span>
           </div>
           
           <button type="submit" class="form-button">
@@ -274,6 +285,39 @@
     flex-shrink: 0;
   }
 
+  /* Form validation styles */
+  .form-error {
+    display: none;
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 4px;
+    font-family: var(--font-primary);
+  }
+
+  .form-error.visible {
+    display: block;
+  }
+
+  .form-input.error {
+    border-color: #ef4444;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--font-primary);
+  }
+
+  .form-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-button.sending {
+    background-color: var(--color-orange);
+    color: var(--color-light);
+  }
+
   /* Tablet Responsive */
   @media (max-width: 1024px) {
     .contacto-section {
@@ -457,12 +501,124 @@
       }, 100);
     }
 
-    // Form handling
-    const form = document.querySelector('.contacto-form');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      console.log('Formulario de contacto enviado');
-      // Lógica para enviar el formulario
-    });
+    // Form handling with validation
+    const form = document.querySelector('.contacto-form') as HTMLFormElement;
+
+    if (form) {
+      // Clear errors on input
+      form.querySelectorAll('.form-input').forEach(input => {
+        input.addEventListener('input', () => {
+          input.classList.remove('error');
+          const errorSpan = input.parentElement?.querySelector('.form-error');
+          errorSpan?.classList.remove('visible');
+        });
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Clear previous errors
+        form.querySelectorAll('.form-error').forEach(error => {
+          error.classList.remove('visible');
+        });
+        form.querySelectorAll('.form-input').forEach(input => {
+          input.classList.remove('error');
+        });
+
+        // Get form data
+        const formData = new FormData(form);
+        const name = (formData.get('name') as string || '').trim();
+        const email = (formData.get('email') as string || '').trim();
+        const message = (formData.get('message') as string || '').trim();
+
+        // Client-side validation
+        let hasErrors = false;
+
+        // Sanitize and validate name
+        const sanitizedName = name.replace(/[<>]/g, '').replace(/javascript:/gi, '');
+        if (sanitizedName.length < 2) {
+          showError('name', 'El nombre debe tener al menos 2 caracteres');
+          hasErrors = true;
+        } else if (sanitizedName.length > 100) {
+          showError('name', 'El nombre es demasiado largo');
+          hasErrors = true;
+        }
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showError('email', 'Por favor ingresa un correo válido');
+          hasErrors = true;
+        }
+
+        // Sanitize and validate message
+        const sanitizedMessage = message.replace(/[<>]/g, '').replace(/javascript:/gi, '');
+        if (sanitizedMessage.length < 10) {
+          showError('message', 'El mensaje debe tener al menos 10 caracteres');
+          hasErrors = true;
+        } else if (sanitizedMessage.length > 1000) {
+          showError('message', 'El mensaje es demasiado largo (máx. 1000 caracteres)');
+          hasErrors = true;
+        }
+
+        if (hasErrors) return;
+
+        // Prepare sanitized data
+        const sanitizedData = {
+          name: sanitizedName,
+          email: email,
+          message: sanitizedMessage
+        };
+
+        // Send to API
+        const button = form.querySelector('.form-button') as HTMLButtonElement;
+        const originalText = button.querySelector('span')?.textContent;
+
+        try {
+          button.disabled = true;
+          button.classList.add('sending');
+          if (button.querySelector('span')) {
+            button.querySelector('span')!.textContent = 'Enviando...';
+          }
+
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(sanitizedData)
+          });
+
+          if (!response.ok) {
+            throw new Error('Error al enviar el mensaje');
+          }
+
+          // Success
+          alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
+          form.reset();
+
+        } catch (error) {
+          alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+        } finally {
+          button.disabled = false;
+          button.classList.remove('sending');
+          if (button.querySelector('span') && originalText) {
+            button.querySelector('span')!.textContent = originalText;
+          }
+        }
+      });
+    }
+
+    function showError(field: string, message: string) {
+      const errorSpan = document.querySelector(`[data-error="${field}"]`);
+      const input = document.querySelector(`[name="${field}"]`);
+
+      if (errorSpan) {
+        errorSpan.textContent = message;
+        errorSpan.classList.add('visible');
+      }
+
+      if (input) {
+        input.classList.add('error');
+      }
+    }
   });
 </script>

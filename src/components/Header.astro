@@ -1,5 +1,6 @@
 ---
 // src/components/Header.astro
+import { NAV_ITEMS } from '../config/site';
 ---
 
 <header class="header">
@@ -18,10 +19,14 @@
 
       <!-- Desktop Navigation -->
       <div class="nav-links desktop-nav">
-        <a href="/" class="nav-link">INICIO</a>
-        <a href="/proyectos" class="nav-link">PROYECTOS</a>
-        <a href="/planes" class="nav-link">PLANES</a>
-        <a href="/contacto" class="nav-link nav-link-cta">CONTACTO</a>
+        {NAV_ITEMS.map((item, index) => (
+          <a
+            href={item.href}
+            class={`nav-link ${index === NAV_ITEMS.length - 1 ? 'nav-link-cta' : ''}`}
+          >
+            {item.label}
+          </a>
+        ))}
       </div>
 
       <!-- Mobile Menu Button -->
@@ -34,12 +39,14 @@
       <!-- Mobile Navigation -->
       <div class="mobile-nav">
         <div class="mobile-nav-content">
-          <a href="/" class="mobile-nav-link">INICIO</a>
-          <a href="/proyectos" class="mobile-nav-link">PROYECTOS</a>
-          <a href="/planes" class="mobile-nav-link">PLANES</a>
-          <a href="/contacto" class="mobile-nav-link mobile-nav-link-cta"
-            >CONTACTO</a
-          >
+          {NAV_ITEMS.map((item, index) => (
+            <a
+              href={item.href}
+              class={`mobile-nav-link ${index === NAV_ITEMS.length - 1 ? 'mobile-nav-link-cta' : ''}`}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
     </nav>

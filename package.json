@@ -11,5 +11,8 @@
   "dependencies": {
     "astro": "5.13.8",
     "gsap": "3.13.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "3.0.0"
   }
 }
