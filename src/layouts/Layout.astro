@@ -1,11 +1,13 @@
 ---
 // src/layouts/Layout.astro
+import { SITE_INFO } from '../config/site';
+
 export interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Kairo Studio - Estudio de diseño y desarrollo de software, audiovisual y más" } = Astro.props;
+const { title, description = SITE_INFO.description } = Astro.props;
 ---
 
 <!doctype html>

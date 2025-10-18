@@ -26,5 +26,6 @@ export const NAV_ITEMS = [
 // Información general del sitio
 export const SITE_INFO = {
   name: 'Kairo Studio',
+  description: 'Estudio creativo especializado en branding, desarrollo de software, automatizaciones y producción audiovisual',
   copyrightYear: new Date().getFullYear(),
 } as const;

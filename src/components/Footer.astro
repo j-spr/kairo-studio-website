@@ -1,6 +1,6 @@
 ---
 // src/components/Footer.astro
-import { SOCIAL_LINKS, SITE_INFO } from '../config/site';
+import { SOCIAL_LINKS, SITE_INFO, NAV_ITEMS } from '../config/site';
 ---
 
 <footer class="footer">
@@ -38,9 +38,9 @@ import { SOCIAL_LINKS, SITE_INFO } from '../config/site';
         <div class="footer-column">
           <h3 class="footer-column-title">Menú</h3>
           <nav class="footer-nav">
-            <a href="/" class="footer-link">Inicio</a>
-            <a href="/proyectos" class="footer-link">Proyectos</a>
-            <a href="/contacto" class="footer-link">Contacto</a>
+            {NAV_ITEMS.slice(0, 3).map((item) => (
+              <a href={item.href} class="footer-link">{item.label.charAt(0) + item.label.slice(1).toLowerCase()}</a>
+            ))}
           </nav>
         </div>
 
