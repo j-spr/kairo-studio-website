@@ -96,10 +96,12 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     width: 100%;
     background-color: var(--color-light);
     padding: 120px 40px;
+    overflow-x: hidden;
   }
 
   .contacto-container {
     max-width: 1520px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -116,10 +118,6 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     color: var(--color-dark);
     margin: 0;
     width: 100%;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   /* Content Grid */
@@ -145,10 +143,6 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     letter-spacing: -0.04em;
     color: var(--color-text-primary);
     margin: 0;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .text-highlight {
@@ -165,10 +159,6 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .contacto-label {
@@ -214,10 +204,6 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateX(50px);
   }
 
   .contacto-form {
@@ -417,89 +403,12 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     }
   }
 
-  /* Animation Classes */
-  .contacto-title.animated,
-  .contacto-description.animated,
-  .contacto-item.animated,
-  .contacto-form-wrapper.animated {
-    opacity: 1;
-    transform: translateY(0) translateX(0);
-  }
+  /* Elements are visible by default - no additional CSS needed */
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap !== 'undefined') {
-      // Animate title first
-      gsap.from('.contacto-title', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.contacto-title',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate description
-      gsap.from('.contacto-description', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.contacto-description',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate contact items
-      gsap.from('.contacto-item', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.contacto-details',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate form
-      gsap.from('.contacto-form-wrapper', {
-        opacity: 0,
-        x: 50,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.contacto-form-wrapper',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    } else {
-      // Fallback animations
-      setTimeout(() => {
-        document.querySelector('.contacto-title')?.classList.add('animated');
-        setTimeout(() => {
-          document.querySelector('.contacto-description')?.classList.add('animated');
-        }, 200);
-        setTimeout(() => {
-          document.querySelectorAll('.contacto-item').forEach((item, index) => {
-            setTimeout(() => item.classList.add('animated'), index * 200);
-          });
-        }, 400);
-        setTimeout(() => {
-          document.querySelector('.contacto-form-wrapper')?.classList.add('animated');
-        }, 600);
-      }, 100);
-    }
+    console.log('Contacto section loaded');
 
     // Form handling with validation
     const form = document.querySelector('.contacto-form') as HTMLFormElement;

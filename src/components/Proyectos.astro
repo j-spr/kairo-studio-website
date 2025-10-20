@@ -109,10 +109,6 @@ const proyectos: Proyecto[] = [
     letter-spacing: -0.04em;
     color: var(--color-dark);
     margin: 0;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .proyectos-description {
@@ -124,10 +120,6 @@ const proyectos: Proyecto[] = [
     max-width: 526px;
     margin: 0;
     text-align: right;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .proyectos-description .text-muted {
@@ -139,10 +131,6 @@ const proyectos: Proyecto[] = [
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .proyecto-item {
@@ -367,82 +355,8 @@ const proyectos: Proyecto[] = [
 </style>
 
 <script>
-  // GSAP Animations
+  // Proyectos loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    // Check if GSAP is loaded
-    if (typeof gsap !== 'undefined') {
-      // Animate proyectos title
-      gsap.from('.proyectos-title', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.proyectos-title',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate description
-      gsap.from('.proyectos-description', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: '.proyectos-description',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate projects grid with stagger
-      gsap.from('.proyecto-item', {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.proyectos-grid',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Parallax effect for project images
-      gsap.utils.toArray('.proyecto-image img').forEach(img => {
-        gsap.to(img as HTMLElement, {
-          yPercent: -10,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: img as HTMLElement,
-            start: 'bottom bottom',
-            end: 'top top',
-            scrub: true
-          }
-        });
-      });
-
-    } else {
-      // Fallback: add animated classes directly
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      // Observe elements
-      const titleEl = document.querySelector('.proyectos-title');
-      if (titleEl) observer.observe(titleEl);
-      const descEl = document.querySelector('.proyectos-description');
-      if (descEl) observer.observe(descEl);
-      const gridEl = document.querySelector('.proyectos-grid');
-      if (gridEl) observer.observe(gridEl);
-    }
+    console.log('Proyectos section loaded');
   });
 </script>

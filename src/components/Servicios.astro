@@ -604,29 +604,10 @@
       })(item, header, toggle);
     }
 
-    // Animación de entrada con GSAP si está disponible
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      var servicesList = document.querySelector('.services-list');
-      if (servicesList) {
-        gsap.from('.service-item', {
-          opacity: 0,
-          y: 30,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: servicesList,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
-        });
-      }
-    } else {
-      // Fallback CSS
-      var servicesList = document.querySelector('.services-list');
-      if (servicesList) {
-        servicesList.classList.add('animate-fallback');
-      }
+    // Animación de entrada con CSS
+    var servicesList = document.querySelector('.services-list');
+    if (servicesList) {
+      servicesList.classList.add('animate-fallback');
     }
   });
 </script>

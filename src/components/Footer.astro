@@ -81,6 +81,7 @@ import { SOCIAL_LINKS, SITE_INFO, NAV_ITEMS } from '../config/site';
   .footer {
     width: 100%;
     background-color: var(--color-dark);
+    overflow-x: hidden;
   }
 
   /* Main Footer Section */
@@ -91,6 +92,7 @@ import { SOCIAL_LINKS, SITE_INFO, NAV_ITEMS } from '../config/site';
 
   .footer-content {
     max-width: 1520px;
+    width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -393,76 +395,13 @@ import { SOCIAL_LINKS, SITE_INFO, NAV_ITEMS } from '../config/site';
     }
   }
 
-  /* Animation setup */
-  .footer-brand,
-  .newsletter-section,
-  .footer-column {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .footer-brand.animated,
-  .newsletter-section.animated,
-  .footer-column.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Elements are visible by default - no additional CSS needed */
 </style>
 
 <script>
-  // GSAP Animations for Footer
+  // Footer loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap !== 'undefined') {
-      // Animate brand
-      gsap.from('.footer-brand', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.footer-brand',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate newsletter
-      gsap.from('.newsletter-section', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.newsletter-section',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Animate footer columns
-      gsap.from('.footer-column', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.footer-links',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    } else {
-      // Fallback: add animated classes directly
-      setTimeout(() => {
-        document.querySelector('.footer-brand')?.classList.add('animated');
-        document.querySelector('.newsletter-section')?.classList.add('animated');
-        document.querySelectorAll('.footer-column').forEach((col, index) => {
-          setTimeout(() => col.classList.add('animated'), index * 200);
-        });
-      }, 100);
-    }
+    console.log('Footer section loaded');
   });
 
   // Newsletter form handling with validation

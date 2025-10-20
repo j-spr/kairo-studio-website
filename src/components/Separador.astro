@@ -92,10 +92,6 @@
     line-height: auto;
     letter-spacing: -0.04em;
     color: var(--color-orange);
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   .separador-title {
@@ -113,10 +109,6 @@
   .title-line {
     display: block;
     color: var(--color-light);
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   /* Usar strong y em para los colores */
@@ -177,78 +169,12 @@
     }
   }
 
-  /* Animation Classes */
-  .separador-small-text.animated,
-  .title-line.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Animation Classes - No longer needed, elements visible by default */
 </style>
 
 <script>
-  // GSAP Animations
+  // Separador loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    // Check if GSAP is loaded
-    if (typeof gsap !== 'undefined') {
-      
-      // Parallax effect for background image (horizontal)
-      gsap.to('.background-image', {
-        x: '-5%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.separador',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1
-        }
-      });
-
-      // Small text animation
-      gsap.from('.separador-small-text', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.separador-content',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Title lines animation with stagger
-      gsap.from('.title-line', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.separador-content',
-          start: 'top 70%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-    } else {
-      // Fallback: add animated classes directly
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            document.querySelector('.separador-small-text')?.classList.add('animated');
-            
-            const titleLines = document.querySelectorAll('.title-line');
-            titleLines.forEach((line, index) => {
-              setTimeout(() => line.classList.add('animated'), index * 150);
-            });
-          }
-        });
-      }, { threshold: 0.2 });
-
-      const separador = document.querySelector('.separador');
-      if (separador) {
-        observer.observe(separador);
-      }
-    }
+    console.log('Separador section loaded');
   });
 </script>

@@ -59,6 +59,8 @@
   }
 
   .hero-content {
+    position: relative;
+    z-index: 10;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -98,10 +100,6 @@
     /* Blend mode effect as in Figma */
     color: var(--color-light);
     mix-blend-mode: difference;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(100px) scale(0.9);
   }
 
   .hero-title-line {
@@ -134,10 +132,6 @@
     line-height: auto;
     color: var(--color-text-tertiary); /* Changed to text-tertiary #9E9E9E */
     margin: 0;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
   }
 
   /* Action Buttons */
@@ -160,10 +154,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Animation setup */
-    opacity: 0;
-    transform: translateY(30px);
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
   /* Hero-specific button styles matching Figma */
@@ -294,113 +285,12 @@
     }
   }
 
-  /* Animation Classes for GSAP */
-  .hero-title.animated {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .hero-text.animated,
-  .hero-btn.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Animation Classes - No longer needed, elements visible by default */
 </style>
 
 <script>
-  // GSAP Animations
+  // Hero loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    // Check if GSAP is loaded
-    if (typeof gsap !== 'undefined') {
-      // Timeline for hero animations
-      const tl = gsap.timeline({ delay: 0.5 });
-
-      // Animate hero title
-      tl.to('.hero-title', {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1.2,
-        ease: 'power3.out'
-      });
-
-      // Animate description text
-      tl.to('.hero-text', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      }, '-=0.6');
-
-      // Animate buttons
-      tl.to('.hero-btn', {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out'
-      }, '-=0.4');
-
-      // Parallax effect for background
-      gsap.registerPlugin(ScrollTrigger);
-      
-      gsap.to('.hero-background img', {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-
-      // Fade out hero content on scroll
-      gsap.to('.hero-content', {
-        opacity: 0.3,
-        y: -50,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'center top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-    } else {
-      // Fallback: add animated classes directly
-      setTimeout(() => {
-        document.querySelector('.hero-title')?.classList.add('animated');
-        document.querySelector('.hero-text')?.classList.add('animated');
-        document.querySelectorAll('.hero-btn').forEach((btn, index) => {
-          setTimeout(() => btn.classList.add('animated'), index * 100);
-        });
-      }, 500);
-    }
-  });
-
-  // Add mouse move parallax effect
-  document.addEventListener('mousemove', (e) => {
-    const hero = document.querySelector('.hero') as HTMLElement;
-    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
-    
-    if (hero && heroTitle) {
-      const rect = hero.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      
-      // Use GSAP for smooth parallax if available, otherwise use CSS transform
-      if (typeof gsap !== 'undefined') {
-        gsap.to(heroTitle, {
-          x: x * 10,
-          y: y * 10,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      } else {
-        // Fallback: use CSS transform directly with proper typing
-        (heroTitle as any).style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-      }
-    }
+    console.log('Hero section loaded');
   });
 </script>
