@@ -330,19 +330,42 @@ const proyectos: Proyecto[] = [
     }
   }
 
-  /* Animation Classes for GSAP */
-  .proyectos-title.animated,
-  .proyectos-description.animated,
-  .proyectos-grid.animated {
+  /* Animaciones */
+  .proyectos-title,
+  .proyectos-description {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .proyectos-title.animate {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Hover Effects Enhancement */
-  .proyecto-item {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  .proyectos-description.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
   }
 
+  .proyecto-item {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .proyecto-item.animate:nth-child(1) { transition-delay: 0.1s; }
+  .proyecto-item.animate:nth-child(2) { transition-delay: 0.2s; }
+  .proyecto-item.animate:nth-child(3) { transition-delay: 0.3s; }
+  .proyecto-item.animate:nth-child(4) { transition-delay: 0.4s; }
+
+  .proyecto-item.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Hover Effects Enhancement */
   .proyecto-item:hover .proyecto-overlay {
     opacity: 1;
     background: rgba(0, 0, 0, 0.5);
@@ -352,11 +375,44 @@ const proyectos: Proyecto[] = [
     transform: scale(1.1);
     filter: blur(2px);
   }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .proyectos-title,
+    .proyectos-description,
+    .proyecto-item {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 
 <script>
-  // Proyectos loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('Proyectos section loaded');
+    // Configurar Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar título y descripción
+    const title = document.querySelector('.proyectos-title');
+    const description = document.querySelector('.proyectos-description');
+    if (title) observer.observe(title);
+    if (description) observer.observe(description);
+
+    // Observar proyectos
+    const projectItems = document.querySelectorAll('.proyecto-item');
+    projectItems.forEach((item) => observer.observe(item));
   });
 </script>

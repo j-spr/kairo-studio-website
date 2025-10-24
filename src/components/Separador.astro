@@ -92,6 +92,12 @@
     line-height: auto;
     letter-spacing: -0.04em;
     color: var(--color-orange);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+
+  .separador-small-text.animate {
+    opacity: 1;
   }
 
   .separador-title {
@@ -169,12 +175,95 @@
     }
   }
 
-  /* Animation Classes - No longer needed, elements visible by default */
+  /* Animaciones */
+  .separador-title {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  }
+
+  .separador-small-text.animate {
+    opacity: 1;
+  }
+
+  .separador-title.animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Parallax background */
+  .separador-background {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .separador-small-text,
+    .separador-title {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .separador-background {
+      transform: none !important;
+    }
+  }
 </style>
 
 <script>
-  // Separador loaded - elements are visible by default
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('Separador section loaded');
+    const separador = document.querySelector('.separador');
+    const smallText = document.querySelector('.separador-small-text');
+    const title = document.querySelector('.separador-title');
+    const background = document.querySelector('.separador-background');
+
+    // Configurar Intersection Observer
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Animar texto pequeño primero
+          if (smallText) {
+            smallText.classList.add('animate');
+          }
+
+          // Animar título después con un delay
+          if (title) {
+            setTimeout(() => {
+              title.classList.add('animate');
+            }, 400);
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar la sección
+    if (separador) {
+      observer.observe(separador);
+    }
+
+    // Parallax effect en background
+    if (background && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const separadorRect = separador.getBoundingClientRect();
+        const separadorTop = separadorRect.top + scrolled;
+        const separadorHeight = separadorRect.height;
+
+        // Solo aplicar parallax cuando la sección es visible
+        if (scrolled + window.innerHeight > separadorTop && scrolled < separadorTop + separadorHeight) {
+          const offset = (scrolled - separadorTop) * 0.15;
+          background.style.transform = `translateY(${offset}px)`;
+        }
+      });
+    }
   });
 </script>

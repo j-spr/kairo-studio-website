@@ -432,20 +432,123 @@
     }
   }
 
-  /* Fallback styles - ensure elements are visible */
+  /* Animaciones */
   .nosotros-title,
-  .nosotros-description,
-  .team-grid,
-  .features-section {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  .nosotros-description {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .nosotros-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nosotros-description.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .team-member,
+  .kairo-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .kairo-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .team-member.animate:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .team-member.animate:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+  .features-description {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .features-description.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .feature-item.animate:nth-child(1) { transition-delay: 0.1s; }
+  .feature-item.animate:nth-child(2) { transition-delay: 0.2s; }
+  .feature-item.animate:nth-child(3) { transition-delay: 0.3s; }
+  .feature-item.animate:nth-child(4) { transition-delay: 0.4s; }
+
+  .feature-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .nosotros-title,
+    .nosotros-description,
+    .team-member,
+    .kairo-card,
+    .features-description,
+    .feature-item {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
 
 <script>
-  // Simple visibility - no animations
   document.addEventListener('DOMContentLoaded', () => {
-    // All elements should be visible by default
-    console.log('Nosotros section loaded');
+    // Configurar Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar título y descripción
+    const title = document.querySelector('.nosotros-title');
+    const description = document.querySelector('.nosotros-description');
+    if (title) observer.observe(title);
+    if (description) observer.observe(description);
+
+    // Observar equipo
+    const teamMembers = document.querySelectorAll('.team-member, .kairo-card');
+    teamMembers.forEach((member) => observer.observe(member));
+
+    // Observar features
+    const featuresDescription = document.querySelector('.features-description');
+    const featureItems = document.querySelectorAll('.feature-item');
+    if (featuresDescription) observer.observe(featuresDescription);
+    featureItems.forEach((item) => observer.observe(item));
   });
 </script>

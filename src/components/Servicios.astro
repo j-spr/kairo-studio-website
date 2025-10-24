@@ -408,23 +408,50 @@
     max-height: 500px;
   }
 
-  /* Animaciones CSS Fallback */
-  .services-list.animate-fallback .service-item {
+  /* Animaciones */
+  .services-title,
+  .services-description {
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 0.6s ease-out forwards;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
 
-  .services-list.animate-fallback .service-item:nth-child(1) { animation-delay: 0.1s; }
-  .services-list.animate-fallback .service-item:nth-child(2) { animation-delay: 0.2s; }
-  .services-list.animate-fallback .service-item:nth-child(3) { animation-delay: 0.3s; }
-  .services-list.animate-fallback .service-item:nth-child(4) { animation-delay: 0.4s; }
-  .services-list.animate-fallback .service-item:nth-child(5) { animation-delay: 0.5s; }
+  .services-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-  @keyframes fadeInUp {
-    to {
+  .services-description.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .service-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .service-item.animate:nth-child(1) { transition-delay: 0.1s; }
+  .service-item.animate:nth-child(2) { transition-delay: 0.2s; }
+  .service-item.animate:nth-child(3) { transition-delay: 0.3s; }
+  .service-item.animate:nth-child(4) { transition-delay: 0.4s; }
+  .service-item.animate:nth-child(5) { transition-delay: 0.5s; }
+
+  .service-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .services-title,
+    .services-description,
+    .service-item {
+      transition: none;
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
   }
 
@@ -562,19 +589,46 @@
   document.addEventListener('DOMContentLoaded', function() {
     var serviceItems = document.querySelectorAll('.service-item');
 
+    // Configurar Intersection Observer para animaciones
+    var observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar título y descripción
+    var title = document.querySelector('.services-title');
+    var description = document.querySelector('.services-description');
+    if (title) observer.observe(title);
+    if (description) observer.observe(description);
+
+    // Observar items de servicio
+    serviceItems.forEach(function(item) {
+      observer.observe(item);
+    });
+
+    // Funcionalidad de toggle
     for (var i = 0; i < serviceItems.length; i++) {
       var item = serviceItems[i];
       var header = item.querySelector('.service-header');
       var toggle = item.querySelector('.service-toggle');
-      
+
       // Crear función con closure para cada item
       (function(currentItem, currentHeader, currentToggle) {
         function handleClick(event) {
           event.preventDefault();
           event.stopPropagation();
-          
+
           var isActive = currentItem.classList.contains('active');
-          
+
           // Cerrar todos los otros servicios
           for (var j = 0; j < serviceItems.length; j++) {
             if (serviceItems[j] !== currentItem) {
@@ -594,18 +648,12 @@
         if (currentHeader) {
           currentHeader.addEventListener('click', handleClick);
         }
-        
+
         // Agregar evento click al botón toggle
         if (currentToggle) {
           currentToggle.addEventListener('click', handleClick);
         }
       })(item, header, toggle);
-    }
-
-    // Animación de entrada con CSS
-    var servicesList = document.querySelector('.services-list');
-    if (servicesList) {
-      servicesList.classList.add('animate-fallback');
     }
   });
 </script>

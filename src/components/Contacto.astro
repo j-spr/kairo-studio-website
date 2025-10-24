@@ -403,12 +403,89 @@ import { CONTACT_EMAIL, PHONE_1, PHONE_2 } from '../config/site';
     }
   }
 
-  /* Elements are visible by default - no additional CSS needed */
+  /* Animaciones */
+  .contacto-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .contacto-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .contacto-info {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .contacto-info.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .contacto-form-wrapper {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .contacto-form-wrapper.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .contacto-title,
+    .contacto-info,
+    .contacto-form-wrapper {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     console.log('Contacto section loaded');
+
+    // Configurar animaciones con Intersection Observer
+    const contactoSection = document.querySelector('.contacto-section');
+    const title = document.querySelector('.contacto-title');
+    const info = document.querySelector('.contacto-info');
+    const formWrapper = document.querySelector('.contacto-form-wrapper');
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Animar título primero
+          if (title) {
+            title.classList.add('animate');
+          }
+
+          // Animar info y form con delay
+          setTimeout(() => {
+            if (info) info.classList.add('animate');
+            if (formWrapper) formWrapper.classList.add('animate');
+          }, 300);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    if (contactoSection) {
+      observer.observe(contactoSection);
+    }
 
     // Form handling with validation
     const form = document.querySelector('.contacto-form') as HTMLFormElement;
